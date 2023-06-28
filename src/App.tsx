@@ -1,10 +1,18 @@
-import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import { useState } from 'react';
 
 function App() {
+  const [page, setPage] = useState(1);
+
   return (
     <div className="App">
+
+      <Header
+        page={page}
+        setPage={setPage}
+      />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
