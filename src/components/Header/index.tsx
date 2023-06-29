@@ -1,15 +1,12 @@
-import { useState } from "react";
 import {
   HeaderContainer,
   HeaderWrapper,
-  ImageTextWrapper,
-  MarvelImage,
+  TitleWrapper,
   OptionsWrapper,
   Option,
   SearchWrapper,
   SearchInput,
 } from "./style";
-import marvelLogo from "../../assets/images/marvelLogo.png";
 
 interface HeaderTypes {
   page: number;
@@ -23,12 +20,18 @@ const Header = ({
   return (
     <HeaderWrapper>
       <HeaderContainer>
-        <ImageTextWrapper>
-          <MarvelImage src={marvelLogo} />
-        </ImageTextWrapper>
+        <TitleWrapper>
+          MARVEL
+        </TitleWrapper>
         <OptionsWrapper>
-          <Option active={page} onClick={() => setPage(1)}>Search</Option>
-          <Option active={page} onClick={() => setPage(2)}>List</Option>
+          <Option
+            active={page}
+            onClick={() => setPage(1)}
+          >Search</Option>
+          <Option
+            active={page}
+            onClick={() => setPage(2)}
+          >List</Option>
         </OptionsWrapper>
         <SearchWrapper>
           <SearchInput placeholder="Search..." />
