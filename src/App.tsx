@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import { useState } from 'react';
+import '../src/assets/fonts/style.css';
 
 function App() {
   const [page, setPage] = useState(1);
