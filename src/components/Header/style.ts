@@ -13,10 +13,9 @@ export const HeaderWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
-  background-color: #504A4A;
+  background-color: #F3EEE8;
   z-index: 999;
-  padding: 10px 0;
+  padding: 0;
 `;
 
 export const HeaderContainer = styled.div`
@@ -25,16 +24,22 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1300px;
   margin: 0;
 `;
 
-export const ImageTextWrapper = styled.div`
+export const TitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #fff;
-  font-size: 46px;
+  margin: 0;
+  box-sizing: border-box;
+  color: #000;
+  font-family: 'Formula Condensed Bold';
+  font-weight:normal;
+  font-size:60px;
+  line-height: 1;
+  padding-top: 10px;
 `;
 
 export const MarvelImage = styled.img`
@@ -54,34 +59,25 @@ export const OptionsWrapper = styled.div`
 export const Option = styled.button<OptionTypes>`
   background-color: transparent;
   border: none;
-  color: #E23636;
+  color: #000000;
   cursor: pointer;
   font-size: 20px;
-  border-radius: 4px;
-  padding: 6px 12px;
-  &:hover {
-    background-color: #C5C6D0 !important;
-  }
+  padding: 0;
   &:first-child {
-    background-color: ${(props) => props.active === 1 ? "#fff" : "transparent"};
+    border-bottom: 3px solid ${(props) => props.active === 1 ? "#E23636" : "transparent"};
   }
   &:last-child {
-    background-color: ${(props) => props.active === 2 ? "#fff" : "transparent"};
-  }
-
-`;
-
-export const SearchWrapper = styled.div`
-  > img {
-    width: 20px;
+    border-bottom: 3px solid ${(props) => props.active === 2 ? "#E23636" : "transparent"};
   }
 `;
+
+export const SearchWrapper = styled.div``;
 
 export const SearchInput = styled.input`
-  width: 320px;
+  width: 300px;
   padding: 6px 12px;
   border-radius: 4px;
-  border: 2px solid #E23636;
+  border: 2px solid #000000;
   font-size: 20px;
   &:focus {
     outline: none;
