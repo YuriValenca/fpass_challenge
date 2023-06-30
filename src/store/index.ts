@@ -3,9 +3,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from "react-redux";
 import thunkMiddleware from 'redux-thunk';
 import heroReducer from "./reducer/fetchHero";
+import heroListReducer from "./reducer/fetchAllHero";
 
 const rootReducer = combineReducers({
   hero: heroReducer,
+  heroList: heroListReducer,
 });
 
 const store = configureStore({
