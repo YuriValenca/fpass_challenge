@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   HeaderContainer,
   HeaderWrapper,
@@ -7,16 +8,31 @@ import {
   SearchWrapper,
   SearchInput,
 } from "./style";
+import { useAppDispatch } from "../../store";
+import { AnyAction } from "redux";
+import { fetchHero } from "../../store/actions/fetchHero";
 
 interface HeaderTypes {
   page: number;
   setPage: (page: number) => void;
+  inputValue: string;
+  setInputValue: (inputValue: string) => void;
 }
 
 const Header = ({
   page,
-  setPage
+  setPage,
+  inputValue,
+  setInputValue,
 }: HeaderTypes) => {
+  const dispatch = useAppDispatch();
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSearch = () => {
+    dispatch(fetchHero(inputValue) as unknown as AnyAction);
+  };
   return (
     <HeaderWrapper>
       <HeaderContainer>
@@ -34,7 +50,16 @@ const Header = ({
           >List</Option>
         </OptionsWrapper>
         <SearchWrapper>
-          <SearchInput placeholder="Search..." />
+          <SearchInput
+            placeholder="Search..."
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyDown={(event: any) => {
+              if (event.key === 'Enter') {
+                handleSearch();
+              }
+            }}
+          />
         </SearchWrapper>
       </HeaderContainer>
     </HeaderWrapper>
