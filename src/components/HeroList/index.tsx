@@ -1,16 +1,8 @@
-import { RootState, useAppDispatch } from "../../store";
-import { fetchAllHeroes } from "../../store/actions/fetchAllHeroes";
-import { AnyAction } from "redux";
+import { RootState } from "../../store";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 const HeroList = () => {
-  const dispatch = useAppDispatch();
   const heroListData = useSelector((state: RootState) => state.heroList.heroes);
-
-  useEffect(() => {
-    dispatch(fetchAllHeroes() as unknown as AnyAction);
-  }, []);
   return (
     <div>
       <h1>Hero List</h1>
