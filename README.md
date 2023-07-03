@@ -78,7 +78,7 @@ Os commits dessa aplicação seguiram o padrão utilizado [neste guia](https://g
 
 Emoji | Code | Commit Type
 ------------ | ------------- | -------------
-:sparkles: | `:sparkles:` | New feature	
+:sparkles: | `:sparkles:` | New feature
 :tada: | `:tada:` | Initial commit
 :nail_care: | `:nail_care:` | Improve UI/UX
 :art: | `:art:` | Improve the structure/code format
