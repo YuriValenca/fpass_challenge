@@ -1,11 +1,19 @@
 import { styled } from "styled-components";
 
-export const SearchHeroContainer = styled.div`
+interface AsModalTypes {
+  asModal: boolean;
+}
+
+interface NotFoundTypes {
+  notFound?: boolean;
+}
+
+export const SearchHeroContainer = styled.div<AsModalTypes>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  margin-top: 170px;
+  justify-content: ${({ asModal }) => asModal ? 'space-between' : 'center'};
+  margin-top: ${({ asModal }) => asModal ? '0' : '170px'};
   max-width: 1300px;
 `;
 
@@ -36,12 +44,18 @@ export const HeroDescription = styled.p`
   margin: 0;
 `;
 
-export const HeroImageContainer = styled.div`
+export const HeroImageContainer = styled.div<NotFoundTypes>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${({ notFound }) => notFound ? '900px' : '450px'};
+
   img {
-    width: 450px;
-    height: auto;
-    max-width: 450px;
+    width: ${({ notFound }) => notFound ? '600px' : '450px'};
+    height: ${({ notFound }) => notFound ? 'auto' : '450px'};
+    max-width: ${({ notFound }) => notFound ? '600px' : '450px'};
     max-height: 450px;
     object-fit: cover;
+    object-position: left center;
   }
 `;
