@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/fpass_challenge/static/css/main.3d4248e1.css",
+    "main.js": "/fpass_challenge/static/js/main.23e9b3cf.js",
+    "static/js/787.28cb0dcd.chunk.js": "/fpass_challenge/static/js/787.28cb0dcd.chunk.js",
+    "static/media/notFound.gif": "/fpass_challenge/static/media/notFound.24b46f78c5a592c8042a.gif",
+    "static/media/loading.gif": "/fpass_challenge/static/media/loading.b0b0eeb4ada174e31c92.gif",
+    "static/media/FormulaCondensed-Light.woff": "/fpass_challenge/static/media/FormulaCondensed-Light.4d2018798f6bbdb02068.woff",
+    "static/media/FormulaCondensed-Bold.woff": "/fpass_challenge/static/media/FormulaCondensed-Bold.675027962d8afcf81e6c.woff",
+    "index.html": "/fpass_challenge/index.html",
+    "main.3d4248e1.css.map": "/fpass_challenge/static/css/main.3d4248e1.css.map",
+    "main.23e9b3cf.js.map": "/fpass_challenge/static/js/main.23e9b3cf.js.map",
+    "787.28cb0dcd.chunk.js.map": "/fpass_challenge/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3d4248e1.css",
+    "static/js/main.23e9b3cf.js"
+  ]
+}
