@@ -40,10 +40,7 @@ export const TitleWrapper = styled.div`
   font-size:60px;
   line-height: 1;
   padding-top: 10px;
-`;
-
-export const MarvelImage = styled.img`
-  width: 120px;
+  user-select: none;
 `;
 
 export const OptionsWrapper = styled.div`
@@ -53,7 +50,6 @@ export const OptionsWrapper = styled.div`
   justify-content: space-evenly;
   font-size: 24px;
   width: 170px;
-
 `;
 
 export const Option = styled.button<OptionTypes>`
@@ -61,25 +57,53 @@ export const Option = styled.button<OptionTypes>`
   border: none;
   color: #000000;
   cursor: pointer;
-  font-size: 20px;
-  padding: 0;
+  font-size: 24px;
+  padding: 2px 4px;
   &:first-child {
-    border-bottom: 3px solid ${(props) => props.active === 1 ? "#E23636" : "transparent"};
+    border-bottom: 2px solid ${(props) => props.active === 1 ? "#E23636" : "transparent"};
   }
   &:last-child {
-    border-bottom: 3px solid ${(props) => props.active === 2 ? "#E23636" : "transparent"};
+    border-bottom: 2px solid ${(props) => props.active === 2 ? "#E23636" : "transparent"};
+  }
+  &:hover {
+    background-color: rgba(226, 54, 54, 0.25);
+    border-radius: 4px;
   }
 `;
 
-export const SearchWrapper = styled.div``;
+export const SearchWrapper = styled.div`
+  display: flex;
+  width: 300px;
+`;
 
 export const SearchInput = styled.input`
-  width: 300px;
+  width: 100%;
   padding: 6px 12px;
   border-radius: 4px;
   border: 2px solid #000000;
   font-size: 20px;
-  &:focus {
-    outline: none;
+`;
+
+export const AutocompleteList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: calc(100% - 16px);
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+export const AutocompleteItem = styled.li`
+  padding: 8px 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f5f5;
   }
 `;
