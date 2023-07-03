@@ -8,22 +8,24 @@ export const fetchHero = createAsyncThunk<Hero, string>('', async (name: string)
   const response = await axios.get(
     urlGenerator(), {
     params: {
-      nameStartsWith: name
+      name,
     }
-  }
-  );
+  });
+  const heroesFound = response.data.data.results;
+  const exactHero = heroesFound.find((hero: Hero) => hero.name === name);
+  if (!exactHero) throw new Error(`Hero ${name} not found!`);
   const hero: Hero = {
-    id: response.data.data.results[0].id,
-    name: response.data.data.results[0].name,
-    description: response.data.data.results[0].description,
+    id: exactHero.id,
+    name: exactHero.name,
+    description: exactHero.description,
     thumbnail: {
-      path: response.data.data.results[0].thumbnail.path,
-      extension: response.data.data.results[0].thumbnail.extension
+      path: exactHero.thumbnail.path,
+      extension: exactHero.thumbnail.extension
     },
-    comics: response.data.data.results[0].comics.available,
-    series: response.data.data.results[0].series.available,
-    stories: response.data.data.results[0].stories.available,
-    events: response.data.data.results[0].events.available,
+    comics: exactHero.comics.available,
+    series: exactHero.series.available,
+    stories: exactHero.stories.available,
+    events: exactHero.events.available,
   };
   return hero;
 });
