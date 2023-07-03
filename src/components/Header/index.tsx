@@ -1,4 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useAppDispatch } from "../../store";
+import { AnyAction } from "redux";
+import { fetchHero } from "../../store/actions/fetchHero";
+import heroesNames from "../../helpers/heroesNames.json";
 import {
   HeaderContainer,
   HeaderWrapper,
@@ -7,32 +11,59 @@ import {
   Option,
   SearchWrapper,
   SearchInput,
+  AutocompleteList,
+  AutocompleteItem,
 } from "./style";
-import { useAppDispatch } from "../../store";
-import { AnyAction } from "redux";
-import { fetchHero } from "../../store/actions/fetchHero";
 
 interface HeaderTypes {
   page: number;
   setPage: (page: number) => void;
-  inputValue: string;
-  setInputValue: (inputValue: string) => void;
 }
 
 const Header = ({
   page,
   setPage,
-  inputValue,
-  setInputValue,
 }: HeaderTypes) => {
   const dispatch = useAppDispatch();
+  const [inputValue, setInputValue] = useState('');
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const autocompleteRef = useRef<HTMLUListElement>(null);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+    const value = event.target.value;
+    setInputValue(value);
+    if (value.trim() === "") {
+      setSuggestions([]);
+    } else {
+      const filteredSuggestions = heroesNames.filter(heroName =>
+        heroName.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filteredSuggestions);
+    }
   };
 
-  const handleSearch = () => {
-    dispatch(fetchHero(inputValue) as unknown as AnyAction);
+  const handleSearch = (searchValue: string) => {
+    dispatch(fetchHero(searchValue) as unknown as AnyAction);
   };
+
+  const handleAutocompleteItemClick = (selectedSuggestion: string) => {
+    setSuggestions([]);
+    handleSearch(selectedSuggestion);
+  };
+
+  const closeAutocomplete = (event: MouseEvent) => {
+    if (autocompleteRef.current && !autocompleteRef.current.contains(event.target as Node)) {
+      setSuggestions([]);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', closeAutocomplete);
+    return () => {
+      document.removeEventListener('click', closeAutocomplete);
+    }
+  }, []);
+
   return (
     <HeaderWrapper>
       <HeaderContainer>
@@ -43,11 +74,15 @@ const Header = ({
           <Option
             active={page}
             onClick={() => setPage(1)}
-          >Search</Option>
+          >
+            Search
+          </Option>
           <Option
             active={page}
             onClick={() => setPage(2)}
-          >List</Option>
+          >
+            List
+          </Option>
         </OptionsWrapper>
         <SearchWrapper>
           <SearchInput
@@ -56,10 +91,27 @@ const Header = ({
             onChange={handleInputChange}
             onKeyDown={(event: any) => {
               if (event.key === 'Enter') {
-                handleSearch();
+                handleSearch(inputValue);
+                setSuggestions([]);
               }
             }}
           />
+          {suggestions.length > 0 && (
+            <AutocompleteList
+              ref={autocompleteRef as React.RefObject<HTMLUListElement>}
+            >
+              {suggestions.map((suggestion, index) => (
+                <AutocompleteItem
+                  key={index}
+                  onClick={() => {
+                    handleAutocompleteItemClick(suggestion)
+                  }}
+                >
+                  {suggestion}
+                </AutocompleteItem>
+              ))}
+            </AutocompleteList>
+          )}
         </SearchWrapper>
       </HeaderContainer>
     </HeaderWrapper>
