@@ -5,25 +5,31 @@ import Header from '../Header';
 import HeroList from '../HeroList';
 import { fetchAllHeroes } from '../../store/actions/fetchAllHeroes';
 import { AnyAction } from 'redux';
+import { AppContentContainer } from './style';
 
 const AppContent = () => {
   const dispatch = useAppDispatch();
   const [page, setPage] = useState(1);
-  const [inputValue, setInputValue] = useState('');
   useEffect(() => {
     dispatch(fetchAllHeroes() as unknown as AnyAction);
   }, []);
 
   return (
-    <>
+    <AppContentContainer>
       <Header
         page={page}
         setPage={setPage}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
       />
-      {page === 1 ? <SearchHero /> : <HeroList />}
-    </>
+      {
+        page === 1 ? (
+          <SearchHero
+            asModal={false}
+          />
+        ) : (
+          <HeroList />
+        )
+      }
+    </AppContentContainer>
   );
 }
 
