@@ -47,6 +47,9 @@ const Header = ({
   };
 
   const handleAutocompleteItemClick = (selectedSuggestion: string) => {
+    setTimeout(() => {
+      setPage(1);
+    }, 550);
     setSuggestions([]);
     handleSearch(selectedSuggestion);
   };
