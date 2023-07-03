@@ -58,6 +58,7 @@ export const Option = styled.button<OptionTypes>`
   color: #000000;
   cursor: pointer;
   font-size: 24px;
+  font-family: 'Lato', sans-serif;
   padding: 2px 4px;
   &:first-child {
     border-bottom: 2px solid ${(props) => props.active === 1 ? "#E23636" : "transparent"};
@@ -82,6 +83,7 @@ export const SearchInput = styled.input`
   border-radius: 4px;
   border: 2px solid #000000;
   font-size: 20px;
+  font-family: 'Lato', sans-serif;
 `;
 
 export const AutocompleteList = styled.ul`
