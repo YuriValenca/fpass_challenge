@@ -1,46 +1,111 @@
-# Getting Started with Create React App
+# fpass challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto utilizado na parte prática da vaga de desenvolvimento front-end React Pleno ou Sênior
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+- [Detalhes do projeto](#detalhes-do-projeto)
+- [Requisitos mandatórios](#requisitos-mandatórios)
+- [Instalando o projeto](#instalando-o-projeto)
+- [Iniciando o projeto](#iniciando-o-projeto)
+- [Commit Style Guide](#commit-style-guide)
 
-### `npm start`
+## Detalhes do projeto
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[(Voltar ao topo)](#índice)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+O projeto baseou-se de acordo com o que foi explicado no repositório de apoio para o desafio, que pode ser encontrado [aqui](https://github.com/holding-fpass/challenge-frontend-fpass). O projeto foi desenvolvido utilizando React, Typescript e Styled Components, e foi hospedado no próprio Github, e pode ser acessado [aqui](https://yurivalenca.github.io/fpass_challenge), ele foi criado com a arquitetura de Single Page Application (SPA), mas aborda as três telas mandatórias do desafio.
 
-### `npm test`
+## Requisitos mandatórios
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[(Voltar ao topo)](#índice)
 
-### `npm run build`
+De acordo com o repositório de apoio, o que se espera do projeto é que:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Existam três telas na aplicação:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [x] Uma pesquisa pelo nome ou parte do nome do herói.
+- [x] Listagem do herói com sua thumbnail.
+- [x] Página com informações sobre o herói selecionado (descrição).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+E ainda:
 
-### `npm run eject`
+- [x] Arquivo READ.md
+- [x] Hospedagem no [Heroku](https://www.heroku.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Utilização de:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [x] Styled Components
+- [x] React
+- [x] Typescript
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Instalando o projeto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+[(Voltar ao topo)](#índice)
 
-## Learn More
+Para instalar o projeto, basta clonar o repositório e executar o comando
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```cmd
+npm install
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+para instalar todas as dependências do projeto. Este comando instalará o React (framework do projeto), assim como algumas bibliotecas de apoio que utilizei para o desenvolvimento do projeto.
+
+## Iniciando o projeto
+
+[(Voltar ao topo)](#índice)
+
+Para iniciar o projeto, basta executar o comando
+
+```cmd
+npm start
+```
+
+e acessar o endereço `http://localhost:3000/` no seu navegador. Ou apertar `Ctrl + click` no endereço que aparecerá no terminal após a execução do comando.
+
+## Commit Style Guide
+
+[(Voltar ao topo)](#índice)
+
+Os commits dessa aplicação seguiram o padrão utilizado [neste guia](https://gist.github.com/mguilhermetavares/4256fe4864b5c48282d1f9b6cbaf0dde), e segue algumas regras como:
+
+- O título do commit deve ser escrito em inglês;
+- O título do commit deve ser escrito no imperativo;
+- Todos os commits devem ser "SignOff" (commit -sm);
+- O título do commit deve ser escrito em no máximo 72 caracteres;
+- O commit deve detalhar o que foi feito, e não o que será feito;
+- Ele deve, idealmente, ser iniciado por um emoji, onde a tabela a seguir (escrita em inglês) declara seu significado:
+
+Emoji | Code | Commit Type
+------------ | ------------- | -------------
+:sparkles: | `:sparkles:` | New feature	
+:tada: | `:tada:` | Initial commit
+:nail_care: | `:nail_care:` | Improve UI/UX
+:art: | `:art:` | Improve the structure/code format
+:racehorse: | `:racehorse:` | Improve performance
+:memo: | `:memo:` | Write documentation
+:bug: | `:bug:` | Fix bugs
+:fire: | `:fire:` | Fix bugs in production (hotfix)
+:green_heart: | `:green_heart:` | Fix a CI build
+:white_check_mark: | `:white_check_mark:` | Add tests
+:lock: | `:lock:` | Improve security
+:arrow_up: | `:arrow_up:` | Update dependencies
+:arrow_down: | `:arrow_down:` | Downgrade dependencies
+:poop: | `:poop:` | Deprecated
+:construction: | `:construction:` | Under construction
+:rocket: | `:rocket:` | New version
+:see_no_evil: | `:see_no_evil:` | Work around (pt-br: "Gambiarra")
+:whale: | `:whale:`  | Docker
+:ok_hand: |`:ok_hand:`   | Code review changes
+:hammer: | `:hammer:`    | Refactor code
+:boom: | `:boom:` | Conflict merge
+:scissors: | `:scissors:` | Legacy code removal
+:milky_way: | `:milky_way:` | Add images/icons
+Other                      | [Be creative](http://www.emoji-cheat-sheet.com/)
+
+### Exemplo
+
+```bash
+git commit -sm ":memo: Add contribution instructions"
+-m "The CONTRIBUTING.md file was created with instructions on how to make a good commit"
+```
