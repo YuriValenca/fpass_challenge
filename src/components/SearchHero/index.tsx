@@ -1,22 +1,39 @@
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
+import {
+  SearchHeroContainer,
+  HeroTextContainer,
+  HeroTitle,
+  HeroDescription,
+  HeroImageContainer,
+} from './style';
+import { heroDescriptionText } from "../../helpers/heroDescriptionText";
+import heroNotFound from "../../assets/images/notFound.gif";
 
 const SearchHero = () => {
-
   const heroData = useSelector((state: RootState) => state.hero.hero);
 
   return (
-    <>
-      <div>
-        <h1>{heroData?.name}</h1>
-        <p>{heroData?.description}</p>
-        <img src={`${heroData?.thumbnail.path}.${heroData?.thumbnail.extension}`} alt={heroData?.name} />
-        <p>Comics: {heroData?.comics}</p>
-        <p>Series: {heroData?.series}</p>
-        <p>Stories: {heroData?.stories}</p>
-        <p>Events: {heroData?.events}</p>
-      </div>
-    </>
+    <SearchHeroContainer>
+      {!heroData.id && (
+        <HeroImageContainer>
+          <img
+            src={heroNotFound}
+            alt="Hero not found GIF"
+          />
+        </HeroImageContainer>
+      )}
+      <HeroImageContainer>
+        <img
+          src={`${heroData?.thumbnail.path}.${heroData?.thumbnail.extension}`}
+          alt={heroData?.name}
+        />
+      </HeroImageContainer>
+      <HeroTextContainer>
+        <HeroTitle>{heroData?.name.toUpperCase()}</HeroTitle>
+        <HeroDescription>{heroDescriptionText(heroData)}</HeroDescription>
+      </HeroTextContainer>
+    </SearchHeroContainer>
   )
 };
 
